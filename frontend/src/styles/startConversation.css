@@ -1,0 +1,49 @@
+.start-conversation-tab {
+  display: flex;
+  height: 100vh;
+}
+
+.left-chat-container {
+  flex: 3;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.chatbox-wrapper {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 5px;
+  height: 400px;
+}
+
+.right-sidebar {
+  flex: 1;
+  border-left: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.prompt-input {
+  margin-top: auto;
+}
+
+.prompt-input input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.prompt-input button {
+  width: 100%;
+  padding: 5px;
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
