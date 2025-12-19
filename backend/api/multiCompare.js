@@ -15,9 +15,8 @@ router.post('/', async (req, res) => {
 
   try {
     for (const modelId of modelNames) {
-      const modelName = modelId; // Map 'modelId' to 'modelName' consistently
-
-      console.log('Payload received in /api/multiCompare:', { modelName, prompt }); // Log the payload
+      // modelId is the full model ID (e.g., "openai/gpt-4o-mini")
+      console.log('multiCompare processing model:', modelId);
 
       const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
@@ -38,10 +37,10 @@ router.post('/', async (req, res) => {
 
       // Save each response as a conversation (defensive: log validation errors)
       try {
-        await Conversation.create({ modelName, prompt, response: reply });
+        await Conversation.create({ modelName: modelId, prompt, response: reply });
       } catch (dbErr) {
         console.error('Conversation.create failed in /api/multiCompare:', dbErr && dbErr.message);
-        console.error('Attempted conversation payload:', { modelName, prompt, response: reply });
+        console.error('Attempted conversation payload:', { modelName: modelId, prompt, response: reply });
       }
     }
 

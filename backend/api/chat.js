@@ -1,6 +1,5 @@
 const express = require('express');
 const Conversation = require('../db/ConversationModel');
-const { LLM_MODELS } = require('../config/models');
 const router = express.Router();
 
 // POST /api/chat
